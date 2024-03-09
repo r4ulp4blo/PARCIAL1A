@@ -1,30 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 using PARCIAL1A.Models;
 
 namespace PARCIAL1A.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class librosController : Controller
+    public class autoreslibroController : Controller
     {
         private readonly ParcialContext _parcialContext;
-        public librosController(ParcialContext librosController)
+        public autoreslibroController(ParcialContext autoreslibrosController)
         {
-            _parcialContext = librosController;
+            _parcialContext = autoreslibrosController;
         }
 
-        /// Metodo para retornar todos los libros
 
-        // Metodo para retornar todos los AutoresLibro
         [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAll()
+        public IActionResult Get()
         {
-            List<autoresLibros> listadoAutoresLibro = _parcialContext.autoresLibros.ToList();
-            return Ok(listadoAutoresLibro);
+            List<autoresLibro> listadoAutoresLibros = _parcialContext.autoresLibro.ToList();
+            return Ok(listadoAutoresLibros);
         }
 
-        /// Metodo crear libro
 
         [HttpPost]
         [Route("Create")]
@@ -47,7 +46,6 @@ namespace PARCIAL1A.Controllers
 
         }
 
-        /// Metodo actualizar libro
 
         [HttpPut]
         [Route("Update/{id}")]
@@ -76,7 +74,6 @@ namespace PARCIAL1A.Controllers
 
         }
 
-        /// Metodo actualizar libro
 
         [HttpDelete]
         [Route("Delete/{id}")]
@@ -101,4 +98,5 @@ namespace PARCIAL1A.Controllers
         }
 
     }
+
 }

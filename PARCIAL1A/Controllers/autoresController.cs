@@ -59,7 +59,7 @@ namespace PARCIAL1A.Controllers
             var autor = _parcialContext.autores.Find(id);
             if (autor == null)
             {
-                return NotFound("cliente no encontrado");
+                return NotFound("autor no encontrado");
             }
 
             autor.Nombre = autorActualizado.Nombre;
@@ -100,5 +100,8 @@ namespace PARCIAL1A.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Error al borra el autor: {ex.Message}");
             }
         }
+
+        
+
     }
 }
